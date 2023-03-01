@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from models import Response
 from valdiai.chatbot import Chatbot
 import uuid
@@ -54,3 +55,5 @@ async def delete_session(session_id: str):
     del chatbots[session_id]
 
     return {"session_id": session_id}
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
