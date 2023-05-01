@@ -1,6 +1,4 @@
-FROM python:3.10
-RUN apt-get update \
-    && apt-get install -y nginx
+FROM nginx
 RUN rm -rf /usr/share/nginx/html/*
 COPY ./gui/build /var/www/html
 COPY ./api .
